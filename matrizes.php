@@ -1,60 +1,48 @@
-<?php
-// Questão 2
-$numeros = array
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Provamt</title>
+    </head>
+    <body>
+        <?php
+$matrizA = array
     (
-    array(1, 2, 3),
-    array(5, 6, 7),
-    array(0, 0, 1)
+    array(1,2,3),
+    array(4,5,6)
 );
-
-function ExibeNumeros($numeros) {
-    $linhas = count($numeros);
-    $colunas = count($numeros[0]);
+$matrizB = array
+    (
+    array(3,2,1),
+    array(6,5,4)
+  
+);
+function GeraTabela($matrizA) {
+    $numeroLinhas = count($matrizA);
+    $numeroColunas = count($matrizA[0]);
     echo "<table border=1>
                    <table border=1>";
-    for ($i = 0; $i < $linhas; $i++) {
+    for ($i = 0; $i < $numeroLinhas; $i++) {
         echo "</tr>";
         echo "<tr>";
-        for ($j = 0; $j < $colunas; $j++) {
-            echo "<td>" .$numeros[$i][$j]. "</td>";
+        for ($j = 0; $j < $numeroColunas; $j++) {
+            echo "<td> ". $matrizA[$i][$j] . "</td>";
         }
     }
+    
     echo "<br>";
 }
-ExibeNumeros($numeros);
-
-function  ZeraDiagonslP($numeros){
-    $copia = $numeros;
- for ($i = 0; $i < 3; $i++) {
-                   
-        for ($j = 0; $j < 3; $j++) {
-            if($i == $j){
-                $copia[$i][$j] = 0; 
-            }   
+function SomaMatrizes($matrizA, $matrizB) {
+    $copia = $matrizA;
+    $numeroLinhas = count($matrizB);
+    $numeroColunas = count($matrizB[0]);
+    for ($i = 0; $i < $numeroLinhas; $i++) {
+       for ($j = 0; $j < $numeroColunas; $j++) {
+           $copia[$i][$j] = $matrizA[$i][$j] + $matrizB[$i][$j];
+       }
         }
+         return $copia;
     }
- return $copia;
-}
-
-function  ZeraDiagonslS($numeros){
-    $copia2 = $numeros;
- for ($i = 0; $i < 3; $i++) {
-                   
-        for ($j = 0; $j < 3; $j++) {
-            if($j == count($numeros) - 1 - $i){
-                $copia2[$i][$j] = 0; 
-            }   
-        }
-    }
- return $copia2;
-}
-
-$resultado = ZeraDiagonslP($numeros);
-ExibeNumeros($resultado);
-
-
-$resultado2 = ZeraDiagonslS($numeros);
-ExibeNumeros($resultado2);
-
-
-?>
+    
+  
+$va = SomaMatrizes($matrizA, $matrizB);
+GeraTabela($va);
