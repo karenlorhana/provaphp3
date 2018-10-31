@@ -1,48 +1,48 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Provamt</title>
+        
     </head>
     <body>
         <?php
-$matrizA = array
+$matriz1 = array
     (
     array(1,2,3),
     array(4,5,6)
 );
-$matrizB = array
+$matriz2 = array
     (
     array(3,2,1),
     array(6,5,4)
   
 );
-function GeraTabela($matrizA) {
-    $numeroLinhas = count($matrizA);
-    $numeroColunas = count($matrizA[0]);
+function GeraTabela($matriz1) {
+    $numeroLinhas = count($matriz1);
+    $numeroColunas = count($matriz1[0]);
     echo "<table border=1>
                    <table border=1>";
     for ($i = 0; $i < $numeroLinhas; $i++) {
         echo "</tr>";
         echo "<tr>";
         for ($j = 0; $j < $numeroColunas; $j++) {
-            echo "<td> ". $matrizA[$i][$j] . "</td>";
+            echo "<td> ". $matriz1[$i][$j] . "</td>";
         }
     }
     
     echo "<br>";
 }
-function SomaMatrizes($matrizA, $matrizB) {
-    $copia = $matrizA;
-    $numeroLinhas = count($matrizB);
-    $numeroColunas = count($matrizB[0]);
+function SomaMatrizes($matriz1, $matriz2) {
+    $copia = $matriz1;
+    $numeroLinhas = count($matriz2);
+    $numeroColunas = count($matriz2[0]);
     for ($i = 0; $i < $numeroLinhas; $i++) {
        for ($j = 0; $j < $numeroColunas; $j++) {
-           $copia[$i][$j] = $matrizA[$i][$j] + $matrizB[$i][$j];
+           $copia[$i][$j] = $matriz1[$i][$j] + $matriz2[$i][$j];
        }
         }
          return $copia;
     }
     
   
-$va = SomaMatrizes($matrizA, $matrizB);
+$va = SomaMatrizes($matriz1, $matriz2);
 GeraTabela($va);
